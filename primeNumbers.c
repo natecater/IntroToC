@@ -1,39 +1,36 @@
 #include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
 int main() {
 
-    int primes[50] = {1, 2};
-    int count = 1;
-    int non_prime_flag = 0;
+    int primes[50] = {0};
+    int count;
+    int primeIndex = 2;
+    bool isPrime;
+    primes[0] = 2;
+    primes[1] = 3;
 
-    for(int i = 3; i < 100; i++) {
+    for(int i = 5; i < 100; i += 2) {
 
-        if (i % 2 == 0) {
-            continue;
-        }
-        else {
-            for (int j = 1; j < (i-1); j++) {
+        isPrime = true;
 
-                non_prime_flag = 0;
-                count = 1;
-
+        for (int j = 1; isPrime && i / primes[j] >= primes[j]; ++j) {
                 if (i % primes[j] == 0) {
-                    non_prime_flag = 1;
+                    isPrime = false;
                     break;
                 }
-                else {
-                    continue;
-                    count++;
-                }
             }
-            if (non_prime_flag == 0) {
-                primes[count] = i;
-            }
+        
+        if (isPrime == true) {
+            primes[primeIndex] = i;
+            ++primeIndex;
         }
 
     }
-    for (int prime = 0; prime < 50; prime++) {
-        printf("%d", primes[prime]);
-    }
 
+    for (int i = 0; i < primeIndex; ++i) {
+        printf("%i ", primes[i]);
+        printf("\n");
+    }
 }
