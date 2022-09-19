@@ -1,3 +1,13 @@
+/* 
+What I would do differently here after seeing some of the solution
+is to declare the loop vars as years/months rather than i/j
+to help with readability
+
+Additionally, make the output for each segment of the challenge part
+of the calculation loops rather than separating them into calculation
+and output loops after
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
