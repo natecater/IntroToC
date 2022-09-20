@@ -2,54 +2,47 @@
 #include <stdlib.h>
 
 //function to determine greatest common divisor, returns a float and should take positive values
-int gcd(signed int a, signed int b) {
+int gcd(int a, int b) {
     int tracker = 0;
 
-    if (a < b) {
-        for(int i = 1; i <= a; ++i) {
-            if (a % i == 0 && b % i == 0) {
-                tracker = i; 
-            }
-        }
-    }
-    else if (b < a) {
-        for(int i = 1; i <= b; ++i) {
-            if (a % i == 0 && b % i == 0) {
-                tracker = i; 
-            }
-        }
+    if(a < 0  || b < 0){
+        printf("Positive values only.\n");
+        return 0;
     }
 
-    return tracker;
+    while (b != 0){
+        tracker = a % b;
+        a = b;
+        b = tracker;
+    }
+
+    return a;
 }
 
 //returns the absolute value of a number, takes and returns floats
 float absoluteVal(float a){
-    if (a < 0) {
+    if (a < 0)
         a *= -1;
-        return a;
-    }   
-    else {
-        return a;
-    }
+    
+    return a;
 }
 
 //function to determine square root of a number, takes a float and returns a float
 float squareRoot(float a) {
     if (a < 0) {
-        printf("Please enter a positive value: ");
+        printf("Please enter a positive value.\n");
         return -1.0;
     }
-    else {
-        float i;
-        i = a;
-        while (i > 0) {
-            if(i * i == a) {
-                return i;
-            }
-            --i;
+    
+    float i;
+    i = a;
+    while (i > 0) {
+        if(i * i == a) {
+            return i;
         }
+        --i;
     }
+    
 }
 
 int main() {
@@ -75,6 +68,6 @@ int main() {
     //test cases for square root function:
     printf("The square root of %i is: %.2f\n", f, squareRoot(f));
     printf("The square root of %.2f is: %.2f\n", g, squareRoot(g));
-    printf("The square root of %i is: %.2ff\n", d, squareRoot(d));
+    printf("The square root of %i is: %.2f\n", d, squareRoot(d));
 
 }
