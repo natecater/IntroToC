@@ -9,42 +9,43 @@ char result[100];
 
 int main() {
 
+    //declare and init some strings
     char str1[] = "Hello my name is Nate.";
     char str2[] = " And I'm learning how to code.";
     char str3[] = "Hello my name is Nate.";
+
+    // check string length func
     printf("String length is: %i\n", stringLength(str1));
 
+    // check string concatenation func
     concatStr(result, str1, str2);
+    printf("%s\n", result);
 
-    unsigned int count = 0;
-
-    while(result[count]) {
-        printf("%c", result[count]);
-        ++count;
-    }
-
-    printf("\n");
-
-    printf("Are str1 and str2 equal? %s", strEqual(str1, str2) ? "yes" : "no");
-    printf("Are str1 and str3 equal? %s", strEqual(str1, str3) ? "yes" : "no");
+    // check string comparison func
+    printf("Are str1 and str2 equal? %s\n", strEqual(str1, str2) ? "yes" : "no");
+    printf("Are str1 and str3 equal? %s\n", strEqual(str1, str3) ? "yes" : "no");
 }
 
+// Function to compare 2 strings and see if they are the same
+// by checking each character and the length
 int strEqual(char a[], char b[]) {
     int result = 1;
-    unsigned int count = 0;
+    int i = 0;
 
-    while(b[count] != '\0') {
-        if(a[count] == b[count])
-            continue;
-        else
-            result = 0;
+    while (a[i] == b[i] && 
+          a[i] != '\0' &&
+          b[i] != '\0') 
+        ++i;
 
-        ++count;
-    }
+    if (a[i] == '\0' && a[i] == '\0')
+        result = 1;
+    else
+        result = 0;
 
     return result;
 }
 
+// function to concatenate 2 strings together
 void concatStr(char r[], char a[], char b[]) {
     unsigned int count1 = 0;
     unsigned int count2 = 0;
@@ -63,6 +64,7 @@ void concatStr(char r[], char a[], char b[]) {
 
 }
 
+// function to check the length of a string
 int stringLength(char a[]){
     unsigned int count = 0;
     while(a[count]) {
