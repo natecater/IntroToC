@@ -14,25 +14,20 @@ int main() {
     printf("\nInput %i strings: ", count);
 
     for(int i = 0; i < count; ++i) {
-        scanf("%s", temp);
-        strcpy(input[i], temp);
+        scanf("%s", input[i]);
     }
 
-    int j = 0; 
-
-    for(int i = 0; i < count; ++i) {
-        if(strcmp(input[i], input[j]) < 1) {
-            continue;
-            ++j;
-        }
-        else if(strcmp(input[i], input[j]) > 1) {
+    for(int i = 1; i < count; ++i) {
+        for(int j = 0; j<=count-i; j++) {
+            if(strcmp(input[j], input[j+1]) > 0) {
             strcpy(temp, input[j]);
-            strcpy(input[j], input[i]);
-            strcpy(input[i], temp);
+            strcpy(input[j], input[j+1]);
+            strcpy(input[j+1], temp);
             ++j;
+            }
         }
     }
-
+    
     for(int i = 0; i < count; ++i) {
         printf("%s\n", input[i]);
     }
